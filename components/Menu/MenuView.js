@@ -32,7 +32,7 @@ export default class MenuView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop:145,
+    marginTop:150,
     backgroundColor: 'white'
   },
 
@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
     flexDirection:'row',
   },
   imageStyle: {
-    height:40,
-    width:40,
+    height:20,
+    width:20,
   },
   textStyle: {
     marginLeft:15,
-    fontSize:19,
+    fontSize:15,
     fontWeight: 'bold'
   }
 

@@ -1,8 +1,9 @@
 import React from 'react';
-import {TouchableOpacity,FlatList,Text} from 'react-native';
-import { CardItem, Left } from 'native-base';
+import {TouchableOpacity,FlatList,Text,Image} from 'react-native';
+import { CardItem, Left,Card, Right, Thumbnail, Title, Subtitle,View} from 'native-base';
 import axios from 'axios';
-import {Card} from 'react-native-elements'
+import {} from 'react-native-elements'
+import config from './config';
 
 export default class ProduitsAlea extends React.Component{
     constructor(props){
@@ -14,30 +15,36 @@ export default class ProduitsAlea extends React.Component{
 
     renderItem = ({item}) => {
       return(
-        <TouchableOpacity style={{marginTop: 100, height: 100}}>
-       
-      <Card
-        title={item.nom}
-        containerStyle = {{padding: 0,height: 190, width: 180, marginTop: 5 , flexDirection: 'column'} }
-        imageProps={{resizeMode: 'stretch'}}
-        image={{uri: 'http://192.168.1.6/LaravelProject/APICourseOnline/' + item.image }}>
-          <CardItem>
-            <Left>
-              <Text style = {{marginBottom: 10}}>
-            {item.nom}
-          </Text>
-            </Left>
-          </CardItem>
-          
+        <Card>
+        <CardItem button>
+          <Left>
+             <Thumbnail
+               style={{width: 80, height: 60, borderRadius: 10, marginRight: 10}} 
+               source={{uri: 'http://192.168.1.6/LaravelProject/APICourseOnline/' + item.image}} />
+               <View style={{alignItems: 'flex-start', top: -10,}}>
+                 <Title style={{color: 'black'}}>{item.reference}</Title>
+                 <Subtitle style={{color: 'black'}}>Subtitle line</Subtitle>
+               </View>
+          </Left>
+          <Right>
+             <View style={{alignItems: 'flex-end'}}>
+               <Text style={{color: 'black'}}>12 dh /kg</Text>
+               <Subtitle style={{color: 'black'}}>Bio</Subtitle>
+             </View>
+          </Right>
+        </CardItem>
       </Card>
-      </TouchableOpacity>
+      //   <TouchableOpacity style={{}}>
+      //     <Image 
+      //         style={{width: 500, height: 100, resizeMode: 'cover', borderRadius: 20, marginTop: 20}}
+      //         source={{uri: 'http://192.168.1.6/LaravelProject/APICourseOnline/' + item.image}}/>
+      // </TouchableOpacity>
       )
     }
     
 
     componentDidMount(){
-        //const url = 'http://www.json-generator.com/api/json/get/ccLAsEcOSq?indent=1';
-        const url = 'http://192.168.1.6:8000/api/produit';
+        const url = config.apiURL + 'produit';
         fetch(url)
         .then((response) => response.json())
         .then((responseJson) => {
@@ -52,13 +59,16 @@ export default class ProduitsAlea extends React.Component{
 
     render(){
         return(
-        
+
+
+         
+           
             <FlatList 
             
               data = {this.state.DATA}
               renderItem = {this.renderItem}
               keyExtractor={(item, index) => index.toString()}/>
-        
+       
         );
     }
 }
