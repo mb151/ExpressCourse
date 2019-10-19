@@ -20,7 +20,7 @@ export default class ProduitsAlea extends React.Component{
           <Left>
              <Thumbnail
                style={{width: 80, height: 60, borderRadius: 10, marginRight: 10}} 
-               source={{uri: 'http://192.168.1.6/LaravelProject/APICourseOnline/' + item.image}} />
+               source={{uri: config.imageURL + item.image}} />
                <View style={{alignItems: 'flex-start', top: -10,}}>
                  <Title style={{color: 'black'}}>{item.reference}</Title>
                  <Subtitle style={{color: 'black'}}>Subtitle line</Subtitle>

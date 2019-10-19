@@ -30,7 +30,7 @@ export default class categorie extends React.Component{
       <TouchableOpacity>
           <Image 
               style={{width: 120, height: 100, resizeMode: 'cover', borderRadius: 20, marginTop: 20}}
-              source={{uri: 'http://192.168.1.6/LaravelProject/APICourseOnline/' + item.image}}/>
+              source={{uri: config.imageURL + item.image}}/>
               <Text style={{textAlign: 'center',position: 'absolute', top: 80, left: 0, right: 0, bottom: 10, justifyContent: 'center', alignItems: 'center', fontSize: 20, backgroundColor: 'white', borderRadius: 20, opacity: 0.7}}>
                   {item.nom}
               </Text>
