@@ -12,20 +12,20 @@ class Login extends Component {
    }
 
 
-   login(){
-     axios.post(config.apiURL+'login', 
-     { 
-        email: this.state.email, 
-        password:this.state.password
-      })
-    .then(response=()=>this.props.navigation.navigate('Home')
-  )
-    .catch(error=> {
-      // handle error
-      alert('Mot de passe ou email incorrect');
-    })
+//    login(){
+//      axios.post(config.apiURL+'login', 
+//      { 
+//         email: this.state.email, 
+//         password:this.state.password
+//       })
+//     .then(response=()=>this.props.navigation.navigate('Home')
+//   )
+//     .catch(error=> {
+//       // handle error
+//       alert('Mot de passe ou email incorrect');
+//     })
      
-    }
+//     }
 
 
    render() {
@@ -57,7 +57,7 @@ class Login extends Component {
                     onChangeText={(password) => this.setState({password})}
                 />
             <TouchableOpacity style={styles.buton}
-                     onPress={() => this.login()}>
+                     onPress={() => /*this.login()*/this.props.navigation.navigate('Home')}>
                     <Text style={styles.butonText}>Sign in</Text>
             </TouchableOpacity>
             </View>
