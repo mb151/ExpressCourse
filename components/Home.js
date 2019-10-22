@@ -3,6 +3,7 @@ import ProduitsAlea from './ProduitsAlea'
 import CategorieList from './CategorieList'
 import { View,ScrollView } from 'react-native'
 import {  } from 'react-native-gesture-handler'
+import MagasinList from './MagasinList'
 
 export default class Home extends React.Component{
   render(){

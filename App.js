@@ -94,7 +94,10 @@ const StackNav = createStackNavigator({
   })
 },
 
-  CategorieList: {screen: CategorieList,navigationOptions: ({navigation}) => ({
+  CategorieList: 
+  {
+    screen: CategorieList,
+    navigationOptions: ({navigation}) => ({
     headerLeft: <App navigationProps={navigation}/>,
     headerStyle: {
       backgroundColor: '#018786',

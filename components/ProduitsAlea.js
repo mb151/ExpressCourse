@@ -59,16 +59,10 @@ export default class ProduitsAlea extends React.Component{
 
     render(){
         return(
-
-
-         
-           
-            <FlatList 
-            
+            <FlatList            
               data = {this.state.DATA}
               renderItem = {this.renderItem}
               keyExtractor={(item, index) => index.toString()}/>
-       
         );
     }
 }
