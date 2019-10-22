@@ -1,11 +1,10 @@
 import React from 'react';
 import {TouchableOpacity,FlatList,Text,Image, ScrollView} from 'react-native';
 import { CardItem, Left,Card, Right, Thumbnail, Title, Subtitle,View} from 'native-base';
-import axios from 'axios';
-import {} from 'react-native-elements'
+import {withNavigation} from 'react-navigation'
 import config from './config';
 
-export default class MagasinList extends React.Component{
+class MagasinList extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -51,8 +50,10 @@ export default class MagasinList extends React.Component{
       }
 
     render(){
+      console.log(this.props.navigation)
         return(
             <ScrollView>
+              <Text>Détail du film {this.props.navigation.getParam('idMag')}</Text>
                 <FlatList 
                     data = {this.state.DATA}
                     renderItem = {this.renderItem}
@@ -61,3 +62,6 @@ export default class MagasinList extends React.Component{
         );
     }
 }
+
+
+export default withNavigation(MagasinList);

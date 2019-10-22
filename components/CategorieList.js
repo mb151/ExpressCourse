@@ -1,9 +1,9 @@
 import React from 'react'
 import {View,SafeAreaView,Text,StyleSheet,TouchableOpacity,FlatList,Image} from 'react-native'
-import {  } from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 import config from './config'
 
-export default class CategorieList extends React.Component{
+class CategorieList extends React.Component{
 
   constructor(props){
     super(props);
@@ -28,9 +28,9 @@ export default class CategorieList extends React.Component{
     });
   }
 
-  renderItem = ({item}) => {
+  renderItem = ({item,idMag}) => {
     return(
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('MagasinList',{idMag: idMag})}>
           <Image 
               style={{width: 120, height: 100, resizeMode: 'cover', borderRadius: 20, marginTop: 20}}
               source={{uri: config.imageURL + item.image}}/>
@@ -76,6 +76,7 @@ export default class CategorieList extends React.Component{
    }
 }
 
+export default withNavigation(CategorieList);
 const styles = StyleSheet.create({
  
   })
