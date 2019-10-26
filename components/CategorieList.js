@@ -28,9 +28,9 @@ class CategorieList extends React.Component{
     });
   }
 
-  renderItem = ({item,idMag}) => {
+  renderItem = ({item}) => {
     return(
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('MagasinList',{idMag: idMag})}>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('MagasinListByItem',{id: item.idCateg})}>
           <Image 
               style={{width: 120, height: 100, resizeMode: 'cover', borderRadius: 20, marginTop: 20}}
               source={{uri: config.imageURL + item.image}}/>

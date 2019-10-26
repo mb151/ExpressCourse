@@ -20,7 +20,7 @@ export default class MenuView extends React.Component {
           </ListItem>
           <ListItem noBorder style={styles.listeItemStyle} onPress={()=>this.props.navigation.navigate('MagasinList')}>
               <Image source={require('../../Images/magasin.png')} style={styles.imageStyle}/>
-              <Text style={styles.textStyle}>Magasin</Text> 
+              <Text style={styles.textStyle}>Magasins</Text> 
           </ListItem>
           <ListItem noBorder style={styles.listeItemStyle} onPress={()=>this.props.navigation.navigate('ProduitList')}>
               <Image source={require('../../Images/produit.png')} style={styles.imageStyle}/>

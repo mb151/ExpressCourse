@@ -7,7 +7,7 @@ class Favoris extends React.Component{
     render(){
         return(
             <View>
-                 <Text>Détail du film {this.props.navigation.getParam('idMag')}</Text>
+                 <Text>Favoris</Text>
             </View>
         )
     }

@@ -7,42 +7,44 @@
  */
 
 import React, {Fragment} from 'react';
-import {StyleSheet,View,TouchableOpacity,Image,SafeAreaView,ScrollView,Text} from 'react-native'
-import {createDrawerNavigator} from 'react-navigation-drawer'
-import {createSwitchNavigator,createAppContainer} from 'react-navigation'
+import {StyleSheet,View,TouchableOpacity,Image,SafeAreaView,ScrollView,Text} from 'react-native';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import {createSwitchNavigator,createAppContainer} from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import Home from './components/Home'
-import Profile from './components/Profile'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import MenuView from './components/Menu/MenuView'
+import Home from './components/Home';
+import Profile from './components/Profile';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import MenuView from './components/Menu/MenuView';
 import MagasinList from "./components/MagasinList";
 import CategorieList from './components/CategorieList'
-import Favoris from './components/Favoris'
-import Panier from './components/Panier'
+import Favoris from './components/Favoris';
+import Panier from './components/Panier';
 import ProduitList from './components/ProduitList';
-import About from './components/About'
+import About from './components/About';
+import MagasinListByItem from './components/MagasinListByItem';
+import TypeProduit from './components/TypeProduit';
 
 
 
 
-class App extends React.Component {
-  toggleDrawer = () => {
-    this.props.navigationProps.toggleDrawer();
-  };
-  render(){
-  return (
-    <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
-          <Image
-            source={require('./Images/menu.png')}
-            style={{ width: 30, height: 25, marginLeft: 10 }}
-          />
-        </TouchableOpacity>
-      </View>
-  );
+  class App extends React.Component {
+    toggleDrawer = () => {
+      this.props.navigationProps.toggleDrawer();
+    };
+    render(){
+    return (
+      <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
+            <Image
+              source={require('./Images/menu.png')}
+              style={{ width: 30, height: 25, marginLeft: 10 }}
+            />
+          </TouchableOpacity>
+        </View>
+    );
+    }
   }
-}
 
 /*Stack navigator qui regroupe les routes vers les differents screens*/
 const StackNav = createStackNavigator({
@@ -129,6 +131,31 @@ ProduitList:
     headerTintColor: '#fff',
   })
 },
+
+MagasinListByItem:
+{
+  screen: MagasinListByItem, 
+    navigationOptions: ({navigation}) => ({
+    headerLeft: <App navigationProps={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#018786',
+    },
+    headerTintColor: '#fff',
+  })
+},
+
+TypeProduit:
+{
+  screen: TypeProduit, 
+    navigationOptions: ({navigation}) => ({
+    headerLeft: <App navigationProps={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#018786',
+    },
+    headerTintColor: '#fff',
+  })
+},
+
 About: 
 {
   screen: About, 

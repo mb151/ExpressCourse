@@ -4,7 +4,7 @@ import { CardItem, Left,Card, Right, Thumbnail, Title, Subtitle,View} from 'nati
 import {withNavigation} from 'react-navigation'
 import config from './config';
 
-class MagasinList extends React.Component{
+class MagasinListByItem extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -13,9 +13,11 @@ class MagasinList extends React.Component{
     }
 
     renderItem = ({item}) => {
+      const id = this.props.navigation.state.params.id
       return(
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('TypeProduit',{id: id})}>
         <Card>
-        <CardItem button>
+        <CardItem >
           <Left>
              <Thumbnail
                style={{width: 80, height: 60, borderRadius: 10, marginRight: 10}} 
@@ -30,13 +32,14 @@ class MagasinList extends React.Component{
              </View>
           </Right>
         </CardItem>
-      </Card>
+      </Card></TouchableOpacity>
       )
     }
     
 
     componentDidMount(){
-        const url = config.apiURL + 'magasin';
+        const id = this.props.navigation.state.params.id;
+        const url = config.apiURL + 'magasinParCateg/'+id;
         fetch(url)
         .then((response) => response.json())
         .then((responseJson) => {
@@ -62,4 +65,4 @@ class MagasinList extends React.Component{
 }
 
 
-export default withNavigation(MagasinList);
+export default withNavigation(MagasinListByItem);
