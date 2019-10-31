@@ -14,7 +14,7 @@ class TypeProduit extends React.Component{
 
     renderItem = ({item}) => {
       return(
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('ProduitList')}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('ProduitList', {id: item.idType})}>
         <Card>
         <CardItem>
           <Left>
@@ -26,20 +26,9 @@ class TypeProduit extends React.Component{
                  <Subtitle style={{color: 'black'}}>{item.descriptionType}</Subtitle>
                </View>
           </Left>
-          {/* <Right>
-             <View style={{alignItems: 'flex-end'}}>
-               <Text style={{color: 'black'}}>12 dh /kg</Text>
-               <Subtitle style={{color: 'black'}}>Bio</Subtitle>
-             </View>
-          </Right> */}
         </CardItem>
       </Card>
       </TouchableOpacity>
-      //   <TouchableOpacity style={{}}>
-      //     <Image 
-      //         style={{width: 500, height: 100, resizeMode: 'cover', borderRadius: 20, marginTop: 20}}
-      //         source={{uri: 'http://192.168.1.6/LaravelProject/APICourseOnline/' + item.image}}/>
-      // </TouchableOpacity>
       )
     }
     

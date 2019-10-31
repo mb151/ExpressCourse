@@ -24,6 +24,7 @@ import ProduitList from './components/ProduitList';
 import About from './components/About';
 import MagasinListByItem from './components/MagasinListByItem';
 import TypeProduit from './components/TypeProduit';
+import ProduitDetail from './components/ProduitDetail';
 
 
 
@@ -147,6 +148,18 @@ MagasinListByItem:
 TypeProduit:
 {
   screen: TypeProduit, 
+    navigationOptions: ({navigation}) => ({
+    headerLeft: <App navigationProps={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#018786',
+    },
+    headerTintColor: '#fff',
+  })
+},
+
+ProduitDetail:
+{
+  screen: ProduitDetail, 
     navigationOptions: ({navigation}) => ({
     headerLeft: <App navigationProps={navigation}/>,
     headerStyle: {
