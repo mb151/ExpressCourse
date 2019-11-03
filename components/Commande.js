@@ -1,10 +1,10 @@
 import React from 'react';
-import {  Image, SafeAreaView,StyleSheet,FlatList, Text,Picker, TouchableOpacity } from 'react-native'
+import { SafeAreaView,FlatList, Text, } from 'react-native'
+import {withNavigation} from 'react-navigation'
+import { CardItem,Left,Card,Title,View} from 'native-base';
 import config from './config';
-import { CardItem, Left,Card, Right, Thumbnail, Title, Subtitle,View} from 'native-base';
-import { withNavigation } from 'react-navigation';
 
-export default class Panier extends React.Component{
+class Commande extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -18,7 +18,9 @@ export default class Panier extends React.Component{
         <CardItem>
           <Left>
                <View style={{alignItems: 'flex-start', top: -10,}}>
-                 <Title style={{color: 'black'}}>{item.totale}</Title>
+                 <Title style={{color: 'black'}}>Date : {item.date}</Title>
+                 <Title style={{color: 'black'}}> Reglé ou Non: {item.etat}</Title>
+                 <Title style={{color: 'black'}}>Total: {item.totale} dh</Title>
                </View>
           </Left>
         </CardItem>
@@ -28,12 +30,12 @@ export default class Panier extends React.Component{
     
 
     componentDidMount(){
-        const url = config.apiURL + 'panier';
+        const url = config.apiURL + 'commande';
         fetch(url)
         .then((response) => response.json())
         .then((responseJson) => {
           this.setState({
-            DATA: responseJson.panier
+            DATA: responseJson.commande
           })
         })
         .catch((error) => {
@@ -44,7 +46,7 @@ export default class Panier extends React.Component{
     render(){
         return(
             <SafeAreaView>
-                <Text>Liste Produits Selectionner</Text>
+                <Text style={{textAlign: 'center', fontSize: 20}}>Liste de mes commandes</Text>
                 <FlatList            
                 data = {this.state.DATA}
                 renderItem = {this.renderItem}
@@ -53,4 +55,4 @@ export default class Panier extends React.Component{
         );
     }
 }
-
+export default withNavigation(Commande);

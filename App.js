@@ -6,8 +6,8 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
-import {StyleSheet,View,TouchableOpacity,Image,SafeAreaView,ScrollView,Text} from 'react-native';
+import React from 'react';
+import {StatusBar,View,TouchableOpacity,Image,SafeAreaView,ScrollView,Text} from 'react-native';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 import {createSwitchNavigator,createAppContainer} from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -25,6 +25,8 @@ import About from './components/About';
 import MagasinListByItem from './components/MagasinListByItem';
 import TypeProduit from './components/TypeProduit';
 import ProduitDetail from './components/ProduitDetail';
+import Produits from './components/Produits';
+import Commande from './components/Commande'
 
 
 
@@ -36,6 +38,7 @@ import ProduitDetail from './components/ProduitDetail';
     render(){
     return (
       <View style={{ flexDirection: 'row' }}>
+        <StatusBar backgroundColor="#4db6ac"/>
           <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
             <Image
               source={require('./Images/menu.png')}
@@ -169,6 +172,30 @@ ProduitDetail:
   })
 },
 
+Produits:
+{
+  screen: Produits, 
+    navigationOptions: ({navigation}) => ({
+    headerLeft: <App navigationProps={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#018786',
+    },
+    headerTintColor: '#fff',
+  })
+},
+
+Commande:
+{
+  screen: Commande, 
+    navigationOptions: ({navigation}) => ({
+    headerLeft: <App navigationProps={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#018786',
+    },
+    headerTintColor: '#fff',
+  })
+},
+
 About: 
 {
   screen: About, 
@@ -198,8 +225,8 @@ const AppDrawerNavigator = createDrawerNavigator({
   })
 
 const AppSwitchNavigator = createSwitchNavigator({
-  //Login: Login,
-  //Signup: Signup,
+  Login: Login,
+  Signup: Signup,
   Home: AppDrawerNavigator,
 })
 

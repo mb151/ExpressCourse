@@ -2,10 +2,10 @@ import React from 'react';
 import {TouchableOpacity,FlatList,Text,Image} from 'react-native';
 import { CardItem, Left,Card, Right, Thumbnail, Title, Subtitle,View} from 'native-base';
 import axios from 'axios';
-import {} from 'react-native-elements'
+import { withNavigation } from 'react-navigation';
 import config from './config';
 
-export default class ProduitsAlea extends React.Component{
+ class ProduitsAlea extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -15,25 +15,25 @@ export default class ProduitsAlea extends React.Component{
 
     renderItem = ({item}) => {
       return(
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('ProduitDetail', {id: item.idProd})}>
         <Card>
-        <CardItem button>
+        <CardItem>
           <Left>
              <Thumbnail
                style={{width: 80, height: 60, borderRadius: 10, marginRight: 10}} 
                source={{uri: config.imageURL + item.image}} />
                <View style={{alignItems: 'flex-start', top: -10,}}>
                  <Title style={{color: 'black'}}>{item.reference}</Title>
-                 <Subtitle style={{color: 'black'}}>Subtitle line</Subtitle>
+                 <Subtitle style={{color: 'black',fontSize: 20}}>Promotion</Subtitle>
                </View>
           </Left>
           <Right>
              <View style={{alignItems: 'flex-end'}}>
-               <Text style={{color: 'black'}}>12 dh /kg</Text>
-               <Subtitle style={{color: 'black'}}>Bio</Subtitle>
+               <Subtitle style={{color: 'red', fontSize: 15}}>-50%</Subtitle>
              </View>
           </Right>
         </CardItem>
-      </Card>
+      </Card></TouchableOpacity>
       //   <TouchableOpacity style={{}}>
       //     <Image 
       //         style={{width: 500, height: 100, resizeMode: 'cover', borderRadius: 20, marginTop: 20}}
@@ -66,3 +66,6 @@ export default class ProduitsAlea extends React.Component{
         );
     }
 }
+
+
+export default withNavigation(ProduitsAlea);

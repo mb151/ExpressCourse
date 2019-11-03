@@ -5,7 +5,7 @@ import axios from 'axios';
 import {} from 'react-native-elements'
 import config from './config';
 
-export default class ProduitList extends React.Component{
+export default class Produits extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -15,7 +15,6 @@ export default class ProduitList extends React.Component{
 
     renderItem = ({item}) => {
       return(
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('ProduitDetail', {id: item.idProd})}>
         <Card>
         <CardItem>
           <Left>
@@ -24,6 +23,7 @@ export default class ProduitList extends React.Component{
                source={{uri: config.imageURL + item.image}} />
                <View style={{alignItems: 'flex-start', top: -10,}}>
                  <Title style={{color: 'black'}}>{item.reference}</Title>
+                 <Subtitle style={{color: 'black'}}>{item.nomType}</Subtitle>
                </View>
           </Left>
           <Right>
@@ -33,19 +33,17 @@ export default class ProduitList extends React.Component{
           </Right>
         </CardItem>
       </Card>
-     </TouchableOpacity>
       )
     }
     
 
     componentDidMount(){
-        const id = this.props.navigation.state.params.id;
-        const url = config.apiURL + 'produitMag/' + id ;
+        const url = config.apiURL + 'allproduct';
         fetch(url)
         .then((response) => response.json())
         .then((responseJson) => {
           this.setState({
-            DATA: responseJson.produits
+            DATA: responseJson.allproduit
           })
         })
         .catch((error) => {

@@ -8,7 +8,7 @@ export default class About extends React.Component{
             <View style={styles.container}>
                 <StatusBar style={styles.statubar}/>
                 <View style={{justifyContent:'center', flexDirection:'row'}}>
-                    <Image style={styles.image} source={require('../Images/moi.jpg')}/>
+                    <Image style={styles.image} source={require('../Images/ano.png')}/>
                 </View>
                 <Text style={styles.text1}>Bachir Ali Mahamadou Aminou</Text>
                 <Text style={styles.text2}>Software Engineer</Text>
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         fontSize:18,
         fontWeight:'bold',
+        color: 'white'
 
     },
     text2:{

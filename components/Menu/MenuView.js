@@ -14,6 +14,10 @@ export default class MenuView extends React.Component {
               <Image source={require('../../Images/shop.png')} style={styles.imageStyle}/>
               <Text style={styles.textStyle}>Panier en cours</Text> 
           </ListItem>
+          <ListItem noBorder style={styles.listeItemStyle} onPress={()=>this.props.navigation.navigate('Commande')}>
+              <Image source={require('../../Images/commandes.jpg')} style={styles.imageStyle}/>
+              <Text style={styles.textStyle}>Mes Commandes</Text> 
+          </ListItem>
           <ListItem noBorder style={styles.listeItemStyle} onPress={()=>this.props.navigation.navigate('Favoris')}>
               <Image source={require('../../Images/favoris.png')} style={styles.imageStyle}/>
               <Text style={styles.textStyle}>Favoris</Text> 
@@ -22,7 +26,7 @@ export default class MenuView extends React.Component {
               <Image source={require('../../Images/magasin.png')} style={styles.imageStyle}/>
               <Text style={styles.textStyle}>Magasins</Text> 
           </ListItem>
-          <ListItem noBorder style={styles.listeItemStyle} onPress={()=>this.props.navigation.navigate('ProduitList')}>
+          <ListItem noBorder style={styles.listeItemStyle} onPress={()=>this.props.navigation.navigate('Produits')}>
               <Image source={require('../../Images/produit.png')} style={styles.imageStyle}/>
               <Text style={styles.textStyle}>Produits</Text> 
           </ListItem>
